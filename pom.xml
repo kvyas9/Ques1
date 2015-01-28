@@ -7,6 +7,20 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
 
+    <scm>
+      <connection>scm:git:https://kvyas9@github.com/MyTest9.git</connection>
+      <developerConnection>scm:git:https://kvyas9@github.com/MyTest9.git</developerConnection>
+    </scm>
+    <developers>
+      <developer>
+        <email>kvyas9@sify.com</email>
+        <name>Kamlesh Vyas</name>
+        <url>https://github.com/kvyas9</url>
+        <id>kvyas9</id>
+      </developer>
+  </developers>
+
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -56,8 +70,48 @@
         </configuration>
     </plugin>
 
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+         <dependencies>
+            <dependency>
+               <groupId>org.codehaus.plexus</groupId>
+               <artifactId>plexus-utils</artifactId>
+               <version>2.1</version>
+            </dependency>
+            <dependency>
+               <groupId>org.apache.maven.scm</groupId>
+               <artifactId>maven-scm-provider-gitexe</artifactId>
+               <version>1.2</version>
+           </dependency>
+         </dependencies>
+        <version>1.0</version>
+        <configuration>
+          <tag>test</tag>
+          <connectionType>connection</connectionType>
+        </configuration>
+        <executions>
+          <execution>
+          <id>tag</id>
+          <phase>deploy</phase>
+          <goals>
+            <goal>tag</goal>
+          </goals>
+          </execution>
+        </executions>
+       </plugin>
   </plugins>
+
+  <distributionManagement>
+    <site>
+      <id>github</id>
+      <url>scm:git:git@github.com:kvyas9/MyTest9.git</url>
+    </site>
+  </distributionManagement>
+
 </build>
+
+
 
 <dependencies>
   <!-- Junit for testing -->
